@@ -207,49 +207,49 @@ document.addEventListener('DOMContentLoaded', () => {
     modalBody.innerHTML = `
       <div class="relative">
         <!-- Header Banner -->
-        <div class="bg-gradient-to-r from-[#07162c] to-[#0e2547] p-8 text-white rounded-t-2xl">
+        <div class="bg-gradient-to-r from-[#07162c] to-[#0e2547] p-5 sm:p-8 text-white rounded-t-2xl sm:rounded-t-3xl">
           <div class="flex items-center gap-2 mb-2">
-            <span class="text-xs font-bold px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/40 uppercase tracking-wider">
+            <span class="text-[11px] sm:text-xs font-bold px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/40 uppercase tracking-wider">
               ${prog.level}
             </span>
-            <span class="text-xs font-medium text-slate-300">
+            <span class="text-xs font-medium text-slate-300 truncate">
               ${prog.facultyName}
             </span>
           </div>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white mb-3">${prog.title}</h2>
-          <p class="text-slate-300 text-sm max-w-2xl leading-relaxed">${prog.overview}</p>
+          <h2 class="text-xl sm:text-3xl font-extrabold text-white mb-2 leading-tight">${prog.title}</h2>
+          <p class="text-slate-300 text-xs sm:text-sm max-w-2xl leading-relaxed">${prog.overview}</p>
         </div>
 
-        <div class="p-8 space-y-8 max-h-[70vh] overflow-y-auto">
+        <div class="p-5 sm:p-8 space-y-6 max-h-[75vh] overflow-y-auto">
           <!-- Quick Specs Grid -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 bg-slate-50 p-5 rounded-2xl border border-slate-200">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 bg-slate-50 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200">
             <div>
-              <div class="text-xs text-slate-500 uppercase tracking-wide">Duration</div>
-              <div class="text-sm font-bold text-slate-900 mt-0.5">${prog.duration}</div>
+              <div class="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wide">Duration</div>
+              <div class="text-xs sm:text-sm font-bold text-slate-900 mt-0.5">${prog.duration}</div>
             </div>
             <div>
-              <div class="text-xs text-slate-500 uppercase tracking-wide">Study Mode</div>
-              <div class="text-sm font-bold text-slate-900 mt-0.5">${prog.mode}</div>
+              <div class="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wide">Study Mode</div>
+              <div class="text-xs sm:text-sm font-bold text-slate-900 mt-0.5">${prog.mode}</div>
             </div>
             <div>
-              <div class="text-xs text-slate-500 uppercase tracking-wide">Upcoming Intakes</div>
-              <div class="text-sm font-bold text-amber-700 mt-0.5">${prog.intakes}</div>
+              <div class="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wide">Upcoming Intakes</div>
+              <div class="text-xs sm:text-sm font-bold text-amber-700 mt-0.5">${prog.intakes}</div>
             </div>
             <div>
-              <div class="text-xs text-slate-500 uppercase tracking-wide">Awarding Body</div>
-              <div class="text-sm font-bold text-blue-900 mt-0.5">${prog.awardingBody}</div>
+              <div class="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wide">Awarding Body</div>
+              <div class="text-xs sm:text-sm font-bold text-blue-900 mt-0.5 truncate">${prog.awardingBody}</div>
             </div>
           </div>
 
           <!-- Modules List -->
           <div>
-            <h3 class="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
+            <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
               <span class="w-6 h-6 rounded-md bg-amber-100 text-amber-800 text-xs flex items-center justify-center font-bold">📚</span>
               Core Modules & Curriculum Structure
             </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3">
               ${prog.modules.map((m, i) => `
-                <div class="flex items-start gap-2.5 p-3 rounded-xl bg-white border border-slate-200 text-xs text-slate-800">
+                <div class="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200 text-xs text-slate-800">
                   <span class="w-5 h-5 rounded-full bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[11px]">${i + 1}</span>
                   <span class="font-medium">${m}</span>
                 </div>
@@ -258,39 +258,39 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
 
           <!-- Entry Requirements & Outcomes -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="bg-blue-50/50 p-5 rounded-2xl border border-blue-100">
-              <h4 class="text-sm font-bold text-blue-950 mb-2 flex items-center gap-2">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <div class="bg-blue-50/50 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-blue-100">
+              <h4 class="text-xs sm:text-sm font-bold text-blue-950 mb-1.5 flex items-center gap-2">
                 <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 Entry Criteria
               </h4>
               <p class="text-xs text-slate-700 leading-relaxed">${prog.eligibility}</p>
             </div>
 
-            <div class="bg-emerald-50/50 p-5 rounded-2xl border border-emerald-100">
-              <h4 class="text-sm font-bold text-emerald-950 mb-2 flex items-center gap-2">
+            <div class="bg-emerald-50/50 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-emerald-100">
+              <h4 class="text-xs sm:text-sm font-bold text-emerald-950 mb-1.5 flex items-center gap-2">
                 <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                 Career & Industry Outcomes
               </h4>
               <div class="flex flex-wrap gap-1.5">
                 ${prog.careerOutcomes.map(c => `
-                  <span class="text-xs font-semibold px-2.5 py-1 bg-white border border-emerald-200 text-emerald-800 rounded-lg">${c}</span>
+                  <span class="text-[11px] sm:text-xs font-semibold px-2.5 py-1 bg-white border border-emerald-200 text-emerald-800 rounded-lg">${c}</span>
                 `).join('')}
               </div>
             </div>
           </div>
 
           <!-- Financial Snapshot & Action -->
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-5 rounded-2xl bg-slate-900 text-white">
-            <div>
-              <div class="text-xs text-slate-400">Estimated Total Investment</div>
-              <div class="text-xl font-extrabold text-amber-400">${prog.tuitionEstimate} <span class="text-xs font-normal text-slate-400">(Or from ${prog.monthlyInstallment})</span></div>
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-slate-900 text-white">
+            <div class="text-center sm:text-left">
+              <div class="text-[11px] text-slate-400">Estimated Total Investment</div>
+              <div class="text-lg sm:text-xl font-extrabold text-amber-400">${prog.tuitionEstimate} <span class="text-xs font-normal text-slate-400 block sm:inline">(Or from ${prog.monthlyInstallment})</span></div>
             </div>
-            <div class="flex items-center gap-3 w-full sm:w-auto">
-              <button onclick="downloadSyllabus('${prog.title}')" class="flex-1 sm:flex-none px-4 py-2.5 rounded-xl border border-white/20 hover:bg-white/10 text-xs font-semibold text-white transition-colors">
+            <div class="flex flex-col sm:flex-row items-center gap-2.5 w-full sm:w-auto">
+              <button onclick="downloadSyllabus('${prog.title}')" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-white/20 hover:bg-white/10 text-xs font-semibold text-white transition-colors">
                 Download Brochure
               </button>
-              <button onclick="quickApply('${prog.title}')" class="flex-1 sm:flex-none px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition-all shadow-md">
+              <button onclick="quickApply('${prog.title}')" class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition-all shadow-md">
                 Apply for Next Intake
               </button>
             </div>
@@ -496,53 +496,53 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     campusDisplay.innerHTML = `
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-white rounded-3xl p-6 sm:p-10 border border-slate-200 shadow-sm">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-10 border border-slate-200 shadow-sm">
         <div>
           <div class="inline-block px-3 py-1 bg-amber-100 text-amber-900 rounded-full text-xs font-bold mb-3">
             ${campus.city}
           </div>
-          <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-4">${campus.name}</h3>
+          <h3 class="text-xl sm:text-3xl font-extrabold text-slate-900 mb-3 sm:mb-4">${campus.name}</h3>
           
-          <div class="space-y-3 text-sm text-slate-600 mb-6">
-            <div class="flex items-start gap-3">
+          <div class="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-slate-600 mb-6">
+            <div class="flex items-start gap-2.5 sm:gap-3">
               <span class="text-blue-600 font-bold shrink-0 mt-0.5">📍</span>
               <span><strong>Address:</strong> ${campus.address}</span>
             </div>
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2.5 sm:gap-3">
               <span class="text-emerald-600 font-bold shrink-0">📞</span>
               <span><strong>Direct Hotlines:</strong> <a href="tel:${campus.phone.split('/')[0].trim()}" class="text-blue-700 hover:underline font-semibold">${campus.phone}</a></span>
             </div>
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2.5 sm:gap-3">
               <span class="text-amber-600 font-bold shrink-0">✉️</span>
               <span><strong>Email:</strong> <a href="mailto:${campus.email}" class="text-blue-700 hover:underline font-semibold">${campus.email}</a></span>
             </div>
-            <div class="flex items-center gap-3">
+            <div class="flex items-center gap-2.5 sm:gap-3">
               <span class="text-purple-600 font-bold shrink-0">⏰</span>
               <span><strong>Campus Hours:</strong> ${campus.hours}</span>
             </div>
           </div>
 
           <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Campus Facilities & Infrastructure</h4>
-          <div class="flex flex-wrap gap-2 mb-6">
+          <div class="flex flex-wrap gap-1.5 sm:gap-2 mb-6">
             ${campus.features.map(f => `
-              <span class="text-xs font-medium px-3 py-1.5 bg-slate-100 text-slate-800 rounded-xl border border-slate-200">
+              <span class="text-[11px] sm:text-xs font-medium px-2.5 sm:px-3 py-1 sm:py-1.5 bg-slate-100 text-slate-800 rounded-lg sm:rounded-xl border border-slate-200">
                 ✓ ${f}
               </span>
             `).join('')}
           </div>
 
-          <div class="flex flex-wrap gap-3">
-            <a href="https://maps.google.com/?q=${encodeURIComponent(campus.address)}" target="_blank" class="px-5 py-2.5 bg-[#07162c] text-white rounded-xl text-xs font-bold hover:bg-[#122a4e] transition-colors flex items-center gap-2">
+          <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
+            <a href="https://maps.google.com/?q=${encodeURIComponent(campus.address)}" target="_blank" class="w-full sm:w-auto px-5 py-3 bg-[#07162c] text-white rounded-xl text-xs font-bold hover:bg-[#122a4e] transition-colors flex items-center justify-center gap-2">
               <span>Open in Google Maps</span>
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
             </a>
-            <button onclick="quickApply('Campus Visit Inquiry - ${campus.name}')" class="px-5 py-2.5 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl text-xs font-bold transition-colors">
+            <button onclick="quickApply('Campus Visit Inquiry - ${campus.name}')" class="w-full sm:w-auto px-5 py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl text-xs font-bold transition-colors text-center">
               Schedule Campus Tour
             </button>
           </div>
         </div>
 
-        <div class="rounded-2xl overflow-hidden h-[340px] border border-slate-200 shadow-inner bg-slate-100">
+        <div class="rounded-2xl overflow-hidden h-[240px] sm:h-[340px] w-full border border-slate-200 shadow-inner bg-slate-100">
           <iframe src="${campus.mapEmbed}" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
         </div>
       </div>

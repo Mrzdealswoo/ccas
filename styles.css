@@ -15,6 +15,42 @@
   --border-subtle: #e2e8f0;
 }
 
+/* Mobile Scroll & Touch Optimizations */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.smooth-scroll-x {
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x mandatory;
+}
+
+/* Mobile Input Sizing to Prevent iOS Auto-Zoom */
+@media (max-width: 768px) {
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* Position Floating WhatsApp Button Above Mobile Bottom Bar */
+@media (max-width: 1023px) {
+  .whatsapp-float {
+    bottom: 5.5rem !important;
+    right: 1rem !important;
+    padding: 0.75rem !important;
+  }
+}
+
+/* Mobile Safe Bottom Padding for Main Container */
+@media (max-width: 1023px) {
+  body {
+    padding-bottom: 4.5rem;
+  }
+}
+
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 9px;

@@ -972,91 +972,95 @@
     </button>
   </aside>
 
-  <!-- 14. COURSE DETAILS MODAL -->
-  <div id="course-modal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-4">
-    <div class="bg-white rounded-2xl sm:rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl relative border border-slate-200 my-auto">
-      <button id="close-modal-btn" class="absolute top-3.5 right-3.5 z-10 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black flex items-center justify-center font-bold text-base transition-colors">
-        ✕
-      </button>
-      <div id="course-modal-body">
-        <!-- Rendered dynamically by app.js -->
-      </div>
+  <!-- 14. COURSE DETAILS MODAL (Mobile-Optimized Pinned Dock) -->
+  <div id="course-modal" class="fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm hidden items-center justify-center p-2.5 sm:p-4">
+    <div id="course-modal-body" class="max-w-3xl w-full my-auto">
+      <!-- Rendered dynamically by app.js with fixed header & pinned action bar -->
     </div>
   </div>
 
-  <!-- 15. ONLINE ADMISSION APPLICATION MODAL -->
-  <div id="apply-modal" class="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm hidden items-center justify-center p-3 sm:p-4">
-    <div class="bg-white rounded-2xl sm:rounded-3xl max-w-xl w-full p-5 sm:p-8 shadow-2xl relative border border-slate-200 max-h-[92vh] overflow-y-auto my-auto">
-      <button id="close-apply-modal" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center font-bold text-sm transition-colors">
-        ✕
-      </button>
-
-      <div class="mb-6">
-        <div class="inline-block px-3 py-1 bg-amber-100 text-amber-900 rounded-full text-[11px] font-bold mb-2">
-          ACADEMIC APPLICATION 2026/27
+  <!-- 15. ONLINE ADMISSION APPLICATION MODAL (Mobile-Optimized Pinned Dock) -->
+  <div id="apply-modal" class="fixed inset-0 z-50 bg-slate-950/75 backdrop-blur-sm hidden items-center justify-center p-2.5 sm:p-4">
+    <div class="bg-white rounded-2xl sm:rounded-3xl max-w-xl w-full shadow-2xl relative border border-slate-200 flex flex-col max-h-[90vh] overflow-hidden my-auto">
+      
+      <!-- Modal Fixed Header (Always visible) -->
+      <div class="shrink-0 p-4 sm:p-5 border-b border-slate-100 flex items-start justify-between gap-3 bg-slate-50/80">
+        <div>
+          <div class="inline-block px-2.5 py-0.5 bg-amber-100 text-amber-900 rounded-full text-[10px] font-bold mb-1">
+            ACADEMIC ADMISSIONS 2026/27
+          </div>
+          <h2 class="text-lg sm:text-2xl font-extrabold text-[#07162c] leading-tight">Apply to CCAS Campus</h2>
+          <p class="text-[11px] sm:text-xs text-slate-500 mt-0.5">Fast-track processing & scholarship evaluation</p>
         </div>
-        <h2 class="text-2xl font-extrabold text-navy-900">Apply to CCAS Campus</h2>
-        <p class="text-xs text-slate-500 mt-1">Submit your details for fast-track processing and scholarship evaluation.</p>
+        <button id="close-apply-modal" class="w-8 h-8 rounded-full bg-slate-200 hover:bg-slate-300 text-slate-700 flex items-center justify-center font-bold text-sm transition-colors shrink-0" aria-label="Close modal">
+          ✕
+        </button>
       </div>
 
-      <form id="apply-form" class="space-y-4">
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Full Legal Name *</label>
-          <input type="text" id="applicant-name" required placeholder="e.g. Nadeesha Perera" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-none focus:border-navy-900">
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+      <!-- Modal Scrollable Form Body -->
+      <div class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-3.5 overscroll-contain">
+        <form id="apply-form" class="space-y-3.5">
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Mobile / WhatsApp Number *</label>
-            <input type="tel" id="applicant-phone" required placeholder="e.g. 077 123 4567" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-none focus:border-navy-900">
+            <label class="block text-xs font-bold text-slate-700 mb-1">Full Legal Name *</label>
+            <input type="text" id="applicant-name" required placeholder="e.g. Nadeesha Perera" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-navy-900 focus:bg-white">
           </div>
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Email Address *</label>
-            <input type="email" id="applicant-email" required placeholder="name@email.com" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-none focus:border-navy-900">
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Mobile / WhatsApp Number *</label>
+              <input type="tel" id="applicant-phone" required placeholder="e.g. 077 123 4567" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-navy-900 focus:bg-white">
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Email Address *</label>
+              <input type="email" id="applicant-email" required placeholder="name@email.com" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-navy-900 focus:bg-white">
+            </div>
           </div>
-        </div>
 
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Select Program of Interest *</label>
-          <select id="apply-program-select" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-800 focus:outline-none focus:border-navy-900">
-            <!-- Dynamically populated -->
-          </select>
-        </div>
-
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
           <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Preferred Campus *</label>
-            <select id="applicant-campus" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-800 focus:outline-none focus:border-navy-900">
-              <option>Colombo (Kalubowila / Dehiwela)</option>
-              <option>Southern (Weligama / Matara)</option>
-              <option>Online Blended Distance Learning</option>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Select Program of Interest *</label>
+            <select id="apply-program-select" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-navy-900 focus:bg-white">
+              <!-- Dynamically populated -->
             </select>
           </div>
-          <div>
-            <label class="block text-xs font-bold text-slate-700 mb-1">Highest Education Level</label>
-            <select class="w-full px-4 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs font-semibold text-slate-800 focus:outline-none focus:border-navy-900">
-              <option>G.C.E. A/L Completed / Pending</option>
-              <option>G.C.E. O/L Completed</option>
-              <option>Diploma Holder / Working Professional</option>
-              <option>Undergraduate / Degree Transfer</option>
-            </select>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Preferred Campus *</label>
+              <select id="applicant-campus" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-navy-900 focus:bg-white">
+                <option>Colombo (Kalubowila / Dehiwela)</option>
+                <option>Southern (Weligama / Matara)</option>
+                <option>Online Blended Distance Learning</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-xs font-bold text-slate-700 mb-1">Highest Education Level</label>
+              <select class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm font-semibold text-slate-800 focus:outline-none focus:border-navy-900 focus:bg-white">
+                <option>G.C.E. A/L Completed / Pending</option>
+                <option>G.C.E. O/L Completed</option>
+                <option>Diploma Holder / Working Professional</option>
+                <option>Undergraduate / Degree Transfer</option>
+              </select>
+            </div>
           </div>
-        </div>
 
-        <div>
-          <label class="block text-xs font-bold text-slate-700 mb-1">Additional Questions / Notes (Optional)</label>
-          <textarea id="applicant-notes" rows="2" placeholder="Mention if you are applying for a scholarship or weekend batch..." class="w-full px-4 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-slate-900 focus:outline-none focus:border-navy-900"></textarea>
-        </div>
+          <div>
+            <label class="block text-xs font-bold text-slate-700 mb-1">Additional Questions / Notes (Optional)</label>
+            <textarea id="applicant-notes" rows="2" placeholder="Mention if you are applying for a scholarship or weekend batch..." class="w-full px-3.5 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs sm:text-sm text-slate-900 focus:outline-none focus:border-navy-900 focus:bg-white"></textarea>
+          </div>
+        </form>
+      </div>
 
-        <button type="submit" class="btn-gold w-full py-3.5 rounded-xl text-xs font-bold text-navy-950 uppercase tracking-wider shadow-md flex items-center justify-center gap-2 mt-2">
+      <!-- Pinned Sticky Bottom Footer (Always Visible & Clickable On All Mobile Screens) -->
+      <div class="shrink-0 p-3.5 sm:p-4 bg-white border-t border-slate-200">
+        <button type="submit" form="apply-form" class="btn-gold w-full py-3.5 rounded-xl text-xs sm:text-sm font-bold text-navy-950 uppercase tracking-wider shadow-md flex items-center justify-center gap-2">
           <span>Submit Application & Connect on WhatsApp</span>
           <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
         </button>
-
-        <p class="text-[11px] text-slate-400 text-center">
-          By submitting, you agree to CCAS academic admissions policies. Your information is 100% confidential.
+        <p class="text-[10px] text-slate-400 text-center mt-1.5">
+          🔒 Direct Admission Officer Connect • 100% Confidential
         </p>
-      </form>
+      </div>
+
     </div>
   </div>
 

@@ -198,59 +198,68 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- 6. Open Course Detail Modal ---
+  // --- 6. Open Course Detail Modal (Mobile-Optimized Pinned Dock) ---
   window.openCourseModal = function(id) {
     if (!modalOverlay || !modalBody || typeof CCAS_PROGRAMS === 'undefined') return;
     const prog = CCAS_PROGRAMS.find(p => p.id === id);
     if (!prog) return;
 
     modalBody.innerHTML = `
-      <div class="relative">
-        <!-- Header Banner -->
-        <div class="bg-gradient-to-r from-[#07162c] to-[#0e2547] p-5 sm:p-8 text-white rounded-t-2xl sm:rounded-t-3xl">
-          <div class="flex items-center gap-2 mb-2">
-            <span class="text-[11px] sm:text-xs font-bold px-3 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/40 uppercase tracking-wider">
-              ${prog.level}
-            </span>
-            <span class="text-xs font-medium text-slate-300 truncate">
-              ${prog.facultyName}
-            </span>
+      <div class="flex flex-col bg-white rounded-2xl sm:rounded-3xl max-h-[90vh] overflow-hidden shadow-2xl border border-slate-200">
+        
+        <!-- 1. FIXED MODAL HEADER (Always Visible At Top) -->
+        <div class="shrink-0 bg-gradient-to-r from-[#07162c] to-[#0e2547] p-4 sm:p-6 text-white flex items-start justify-between gap-3 border-b border-white/10">
+          <div class="pr-4">
+            <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+              <span class="text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/40 uppercase tracking-wider">
+                ${prog.level}
+              </span>
+              <span class="text-[11px] sm:text-xs font-medium text-slate-300 truncate">
+                ${prog.facultyName}
+              </span>
+            </div>
+            <h2 class="text-lg sm:text-2xl font-extrabold text-white leading-tight">${prog.title}</h2>
           </div>
-          <h2 class="text-xl sm:text-3xl font-extrabold text-white mb-2 leading-tight">${prog.title}</h2>
-          <p class="text-slate-300 text-xs sm:text-sm max-w-2xl leading-relaxed">${prog.overview}</p>
+          <!-- Fixed Close Button -->
+          <button onclick="closeModal()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/15 hover:bg-white/30 text-white flex items-center justify-center font-bold text-base transition-colors shrink-0" aria-label="Close modal">
+            ✕
+          </button>
         </div>
 
-        <div class="p-5 sm:p-8 space-y-6 max-h-[75vh] overflow-y-auto">
+        <!-- 2. SCROLLABLE MIDDLE BODY (Curriculum, Modules, Specs) -->
+        <div class="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5 text-xs text-slate-700 overscroll-contain">
+          <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${prog.overview}</p>
+
           <!-- Quick Specs Grid -->
-          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 bg-slate-50 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-slate-200">
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 bg-slate-50 p-3.5 sm:p-4 rounded-xl border border-slate-200">
             <div>
-              <div class="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wide">Duration</div>
+              <div class="text-[10px] text-slate-500 uppercase font-semibold">Duration</div>
               <div class="text-xs sm:text-sm font-bold text-slate-900 mt-0.5">${prog.duration}</div>
             </div>
             <div>
-              <div class="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wide">Study Mode</div>
+              <div class="text-[10px] text-slate-500 uppercase font-semibold">Study Mode</div>
               <div class="text-xs sm:text-sm font-bold text-slate-900 mt-0.5">${prog.mode}</div>
             </div>
             <div>
-              <div class="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wide">Upcoming Intakes</div>
+              <div class="text-[10px] text-slate-500 uppercase font-semibold">Intakes</div>
               <div class="text-xs sm:text-sm font-bold text-amber-700 mt-0.5">${prog.intakes}</div>
             </div>
             <div>
-              <div class="text-[10px] sm:text-xs text-slate-500 uppercase tracking-wide">Awarding Body</div>
+              <div class="text-[10px] text-slate-500 uppercase font-semibold">Awarding Body</div>
               <div class="text-xs sm:text-sm font-bold text-blue-900 mt-0.5 truncate">${prog.awardingBody}</div>
             </div>
           </div>
 
           <!-- Modules List -->
           <div>
-            <h3 class="text-base sm:text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
-              <span class="w-6 h-6 rounded-md bg-amber-100 text-amber-800 text-xs flex items-center justify-center font-bold">📚</span>
+            <h3 class="text-sm sm:text-base font-bold text-slate-900 mb-2.5 flex items-center gap-2">
+              <span class="w-5 h-5 rounded-md bg-amber-100 text-amber-800 text-xs flex items-center justify-center font-bold">📚</span>
               Core Modules & Curriculum Structure
             </h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 sm:gap-3">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
               ${prog.modules.map((m, i) => `
-                <div class="flex items-start gap-2.5 p-2.5 sm:p-3 rounded-xl bg-white border border-slate-200 text-xs text-slate-800">
-                  <span class="w-5 h-5 rounded-full bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[11px]">${i + 1}</span>
+                <div class="flex items-start gap-2 p-2.5 rounded-lg bg-white border border-slate-200 text-xs text-slate-800">
+                  <span class="w-4 h-4 rounded-full bg-slate-100 text-slate-600 font-bold flex items-center justify-center shrink-0 text-[10px]">${i + 1}</span>
                   <span class="font-medium">${m}</span>
                 </div>
               `).join('')}
@@ -258,44 +267,46 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
 
           <!-- Entry Requirements & Outcomes -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
-            <div class="bg-blue-50/50 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-blue-100">
-              <h4 class="text-xs sm:text-sm font-bold text-blue-950 mb-1.5 flex items-center gap-2">
-                <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
+            <div class="bg-blue-50/60 p-3.5 sm:p-4 rounded-xl border border-blue-100">
+              <h4 class="text-xs font-bold text-blue-950 mb-1 flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 Entry Criteria
               </h4>
-              <p class="text-xs text-slate-700 leading-relaxed">${prog.eligibility}</p>
+              <p class="text-[11px] text-slate-700 leading-relaxed">${prog.eligibility}</p>
             </div>
 
-            <div class="bg-emerald-50/50 p-4 sm:p-5 rounded-xl sm:rounded-2xl border border-emerald-100">
-              <h4 class="text-xs sm:text-sm font-bold text-emerald-950 mb-1.5 flex items-center gap-2">
-                <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+            <div class="bg-emerald-50/60 p-3.5 sm:p-4 rounded-xl border border-emerald-100">
+              <h4 class="text-xs font-bold text-emerald-950 mb-1 flex items-center gap-1.5">
+                <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                 Career & Industry Outcomes
               </h4>
-              <div class="flex flex-wrap gap-1.5">
+              <div class="flex flex-wrap gap-1">
                 ${prog.careerOutcomes.map(c => `
-                  <span class="text-[11px] sm:text-xs font-semibold px-2.5 py-1 bg-white border border-emerald-200 text-emerald-800 rounded-lg">${c}</span>
+                  <span class="text-[10px] sm:text-[11px] font-semibold px-2 py-0.5 bg-white border border-emerald-200 text-emerald-800 rounded">${c}</span>
                 `).join('')}
               </div>
             </div>
           </div>
+        </div>
 
-          <!-- Financial Snapshot & Action -->
-          <div class="flex flex-col sm:flex-row items-center justify-between gap-4 p-4 sm:p-5 rounded-xl sm:rounded-2xl bg-slate-900 text-white">
-            <div class="text-center sm:text-left">
-              <div class="text-[11px] text-slate-400">Estimated Total Investment</div>
-              <div class="text-lg sm:text-xl font-extrabold text-amber-400">${prog.tuitionEstimate} <span class="text-xs font-normal text-slate-400 block sm:inline">(Or from ${prog.monthlyInstallment})</span></div>
-            </div>
-            <div class="flex flex-col sm:flex-row items-center gap-2.5 w-full sm:w-auto">
-              <button onclick="downloadSyllabus('${prog.title}')" class="w-full sm:w-auto px-4 py-2.5 rounded-xl border border-white/20 hover:bg-white/10 text-xs font-semibold text-white transition-colors">
-                Download Brochure
-              </button>
-              <button onclick="quickApply('${prog.title}')" class="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold transition-all shadow-md">
-                Apply for Next Intake
-              </button>
-            </div>
+        <!-- 3. PINNED STICKY BOTTOM ACTION BAR (Always Visible & 1-Tap Clickable on Mobile!) -->
+        <div class="shrink-0 bg-white border-t border-slate-200 p-3 sm:p-4 shadow-lg flex items-center justify-between gap-3">
+          <div class="leading-tight">
+            <div class="text-[10px] text-slate-500 uppercase font-semibold">Total Investment</div>
+            <div class="text-sm sm:text-base font-extrabold text-amber-600">${prog.tuitionEstimate}</div>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="downloadSyllabus('${prog.title}')" class="hidden sm:inline-block px-3.5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-xs font-semibold text-slate-700 transition-colors">
+              Brochure
+            </button>
+            <button onclick="quickApply('${prog.title}')" class="btn-gold px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-md flex items-center gap-1.5">
+              <span>Apply for Next Intake</span>
+              <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+            </button>
           </div>
         </div>
+
       </div>
     `;
 
@@ -311,6 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
     modalOverlay.classList.remove('flex');
     document.body.style.overflow = '';
   }
+  window.closeModal = closeModal;
 
   if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
   if (modalOverlay) {
@@ -332,17 +344,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   };
 
+  function closeApplyModal() {
+    if (!applyModal) return;
+    applyModal.classList.add('hidden');
+    applyModal.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+  window.closeApplyModal = closeApplyModal;
+
   if (closeApplyModalBtn && applyModal) {
-    closeApplyModalBtn.addEventListener('click', () => {
-      applyModal.classList.add('hidden');
-      applyModal.classList.remove('flex');
-      document.body.style.overflow = '';
-    });
+    closeApplyModalBtn.addEventListener('click', closeApplyModal);
     applyModal.addEventListener('click', (e) => {
       if (e.target === applyModal) {
-        applyModal.classList.add('hidden');
-        applyModal.classList.remove('flex');
-        document.body.style.overflow = '';
+        closeApplyModal();
       }
     });
   }

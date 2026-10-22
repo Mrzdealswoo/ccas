@@ -1,0 +1,176 @@
+/* CCAS Campus - Modern Academic Styling & Micro-interactions */
+
+:root {
+  --primary-navy: #07162c;
+  --secondary-navy: #0e2344;
+  --deep-navy: #040d1a;
+  --academic-gold: #d4af37;
+  --bright-gold: #f59e0b;
+  --gold-glow: rgba(212, 175, 55, 0.25);
+  --accent-blue: #2563eb;
+  --surface-card: #ffffff;
+  --surface-muted: #f8fafc;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-subtle: #e2e8f0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+::-webkit-scrollbar-track {
+  background: #07162c;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e3a63;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37;
+}
+
+/* Base resets & typography */
+html {
+  scroll-behavior: smooth;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--text-main);
+  background-color: #fbfcfe;
+  overflow-x: hidden;
+}
+
+/* Academic Gradient & Accents */
+.bg-academic-navy {
+  background: linear-gradient(135deg, #07162c 0%, #0e2547 50%, #091a33 100%);
+}
+
+.bg-academic-dark {
+  background-color: #040e1d;
+}
+
+.text-gold-gradient {
+  background: linear-gradient(135deg, #fce07e 0%, #d4af37 50%, #b8860b 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.border-gold-glow {
+  border-color: rgba(212, 175, 55, 0.4);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+}
+
+.gold-badge {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(245, 158, 11, 0.1) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #d4af37;
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.glass-panel-dark {
+  background: rgba(14, 35, 68, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Card Hover Elevation */
+.course-card {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.28s ease;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 35px -10px rgba(7, 22, 44, 0.12), 0 0 1px 1px rgba(212, 175, 55, 0.25);
+  border-color: rgba(212, 175, 55, 0.6);
+}
+
+/* Gold Button Styles */
+.btn-gold {
+  background: linear-gradient(135deg, #e6bc3a 0%, #d4af37 50%, #b8860b 100%);
+  color: #07162c;
+  font-weight: 700;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+}
+
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+  background: linear-gradient(135deg, #f5d05d 0%, #e0bd47 50%, #c49419 100%);
+}
+
+.btn-navy {
+  background-color: #07162c;
+  color: #ffffff;
+  font-weight: 600;
+  transition: all 0.25s ease;
+}
+
+.btn-navy:hover {
+  background-color: #122a4e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(7, 22, 44, 0.25);
+}
+
+/* Pulse animation for live badge */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.15);
+  }
+}
+
+.pulse-dot {
+  animation: pulseGlow 2s infinite ease-in-out;
+}
+
+/* Modal Transitions */
+.modal-overlay {
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.modal-content-box {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+/* Ticker Animation */
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: 200%;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* Floating WhatsApp Pulse */
+.whatsapp-float {
+  box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.whatsapp-float:hover {
+  transform: scale(1.08) translateY(-3px);
+  box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+}

@@ -1,4 +1,5 @@
-// CCAS Campus - Modern Web Application Logic
+// CCAS Campus - Official Brand Web Application Logic
+// Primary Brand Colors: CCAS Blue (#0072bb), CCAS Leaf Green (#70a943), Deep Collegiate Navy (#05182c)
 
 document.addEventListener('DOMContentLoaded', () => {
   // --- State ---
@@ -72,10 +73,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (filtered.length === 0) {
       programsGrid.innerHTML = `
         <div class="col-span-full py-16 text-center bg-white rounded-2xl border border-dashed border-slate-300 p-8">
-          <div class="w-16 h-16 mx-auto mb-4 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center text-2xl font-bold">🔍</div>
+          <div class="w-16 h-16 mx-auto mb-4 bg-emerald-50 text-[#70a943] rounded-full flex items-center justify-center text-2xl font-bold">🔍</div>
           <h3 class="text-xl font-bold text-slate-800 mb-2">No Matching Programs Found</h3>
           <p class="text-slate-500 max-w-md mx-auto mb-6">We couldn't find any courses matching your specific search criteria. Try selecting another faculty or clearing the search bar.</p>
-          <button id="reset-filters-btn" class="px-6 py-2.5 bg-[#07162c] text-white rounded-xl font-semibold hover:bg-[#122a4e] transition-colors">Reset All Filters</button>
+          <button id="reset-filters-btn" class="px-6 py-2.5 bg-[#0072bb] text-white rounded-xl font-semibold hover:bg-[#005f9e] transition-colors shadow-md">Reset All Filters</button>
         </div>
       `;
       const resetBtn = document.getElementById('reset-filters-btn');
@@ -86,8 +87,8 @@ document.addEventListener('DOMContentLoaded', () => {
           searchQuery = '';
           if (searchInput) searchInput.value = '';
           if (facultyFilter) facultyFilter.value = 'all';
-          categoryTabs.forEach(t => t.classList.remove('active', 'bg-[#07162c]', 'text-white'));
-          categoryTabs[0].classList.add('active', 'bg-[#07162c]', 'text-white');
+          categoryTabs.forEach(t => t.classList.remove('active', 'bg-[#0072bb]', 'text-white'));
+          categoryTabs[0].classList.add('active', 'bg-[#0072bb]', 'text-white');
           renderPrograms();
         });
       }
@@ -95,10 +96,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     programsGrid.innerHTML = filtered.map(prog => {
-      const categoryColor = prog.category === 'degree' ? 'bg-amber-100 text-amber-900 border-amber-300' :
-                            prog.category === 'hnd' ? 'bg-blue-100 text-blue-900 border-blue-300' :
-                            prog.category === 'diploma' ? 'bg-emerald-100 text-emerald-900 border-emerald-300' :
-                            'bg-purple-100 text-purple-900 border-purple-300';
+      // Official CCAS Category color tags
+      const categoryColor = prog.category === 'degree' ? 'bg-[#0072bb]/10 text-[#0072bb] border-[#0072bb]/30' :
+                            prog.category === 'hnd' ? 'bg-[#70a943]/15 text-[#4b7a27] border-[#70a943]/35' :
+                            prog.category === 'diploma' ? 'bg-sky-50 text-sky-800 border-sky-200' :
+                            'bg-indigo-50 text-indigo-800 border-indigo-200';
       
       return `
         <div class="course-card bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col justify-between shadow-sm hover:shadow-xl transition-all duration-300 group">
@@ -106,45 +108,45 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- Card Image -->
             <div class="relative h-48 w-full overflow-hidden bg-slate-100">
               <img src="${prog.image}" alt="${prog.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"></div>
               
               <!-- Badges -->
               <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
                 <span class="text-xs font-semibold px-2.5 py-1 rounded-full border ${categoryColor}">
                   ${prog.level}
                 </span>
-                ${prog.badge ? `<span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-amber-500 text-slate-950 font-bold shadow-sm">★ ${prog.badge}</span>` : ''}
+                ${prog.badge ? `<span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-[#70a943] text-white font-bold shadow-xs">★ ${prog.badge}</span>` : ''}
               </div>
 
               <div class="absolute bottom-3 left-3 right-3 text-white">
-                <span class="text-xs uppercase tracking-wider text-amber-300 font-semibold">${prog.facultyName}</span>
+                <span class="text-xs uppercase tracking-wider text-[#a3f377] font-bold">${prog.facultyName}</span>
               </div>
             </div>
 
             <!-- Card Body -->
             <div class="p-6">
-              <h3 class="text-lg font-bold text-slate-900 mb-2 line-clamp-2 group-hover:text-[#07162c] transition-colors">${prog.title}</h3>
+              <h3 class="text-lg font-bold text-slate-900 mb-2 line-clamp-2 group-hover:text-[#0072bb] transition-colors">${prog.title}</h3>
               <p class="text-sm text-slate-600 line-clamp-2 mb-4 leading-relaxed">${prog.overview}</p>
 
               <!-- Meta specs -->
               <div class="space-y-2 border-t border-slate-100 pt-3 text-xs text-slate-600">
                 <div class="flex items-center justify-between">
                   <span class="flex items-center gap-1.5 text-slate-500">
-                    <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <svg class="w-4 h-4 text-[#70a943]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                     Duration:
                   </span>
                   <span class="font-semibold text-slate-800">${prog.duration}</span>
                 </div>
                 <div class="flex items-center justify-between">
                   <span class="flex items-center gap-1.5 text-slate-500">
-                    <svg class="w-4 h-4 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                    <svg class="w-4 h-4 text-[#0072bb]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
                     Delivery Mode:
                   </span>
                   <span class="font-semibold text-slate-800">${prog.mode}</span>
                 </div>
                 <div class="flex items-center justify-between">
                   <span class="flex items-center gap-1.5 text-slate-500">
-                    <svg class="w-4 h-4 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+                    <svg class="w-4 h-4 text-[#70a943]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
                     Affiliation:
                   </span>
                   <span class="font-semibold text-slate-800 truncate max-w-[170px]" title="${prog.awardingBody}">${prog.awardingBody}</span>
@@ -155,11 +157,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
           <!-- Card Footer Actions -->
           <div class="p-6 pt-0 border-t border-slate-100 flex items-center gap-3">
-            <button onclick="openCourseModal('${prog.id}')" class="flex-1 py-2.5 px-3 bg-slate-100 hover:bg-[#07162c] hover:text-white text-slate-800 text-xs font-bold rounded-xl transition-all duration-200 text-center flex items-center justify-center gap-1.5">
+            <button onclick="openCourseModal('${prog.id}')" class="flex-1 py-2.5 px-3 bg-slate-100 hover:bg-[#0072bb] hover:text-white text-slate-800 text-xs font-bold rounded-xl transition-all duration-200 text-center flex items-center justify-center gap-1.5">
               <span>View Curriculum</span>
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
             </button>
-            <button onclick="quickApply('${prog.title}')" class="py-2.5 px-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 text-xs font-bold rounded-xl transition-all duration-200 shadow-sm flex items-center justify-center">
+            <button onclick="quickApply('${prog.title}')" class="btn-ccas-green py-2.5 px-4 text-xs font-bold rounded-xl transition-all duration-200 shadow-sm flex items-center justify-center">
               Apply
             </button>
           </div>
@@ -172,10 +174,10 @@ document.addEventListener('DOMContentLoaded', () => {
   categoryTabs.forEach(tab => {
     tab.addEventListener('click', () => {
       categoryTabs.forEach(t => {
-        t.classList.remove('active', 'bg-[#07162c]', 'text-white', 'shadow-md');
+        t.classList.remove('active', 'bg-[#0072bb]', 'text-white', 'shadow-md');
         t.classList.add('bg-slate-100', 'text-slate-700');
       });
-      tab.classList.add('active', 'bg-[#07162c]', 'text-white', 'shadow-md');
+      tab.classList.add('active', 'bg-[#0072bb]', 'text-white', 'shadow-md');
       tab.classList.remove('bg-slate-100', 'text-slate-700');
       currentCategory = tab.dataset.category;
       renderPrograms();
@@ -207,14 +209,14 @@ document.addEventListener('DOMContentLoaded', () => {
     modalBody.innerHTML = `
       <div class="flex flex-col bg-white rounded-2xl sm:rounded-3xl max-h-[90vh] overflow-hidden shadow-2xl border border-slate-200">
         
-        <!-- 1. FIXED MODAL HEADER (Always Visible At Top) -->
-        <div class="shrink-0 bg-gradient-to-r from-[#07162c] to-[#0e2547] p-4 sm:p-6 text-white flex items-start justify-between gap-3 border-b border-white/10">
+        <!-- 1. FIXED MODAL HEADER (Always Visible At Top in CCAS Navy & Blue Gradient) -->
+        <div class="shrink-0 bg-gradient-to-r from-[#05182c] via-[#0a294d] to-[#0072bb] p-4 sm:p-6 text-white flex items-start justify-between gap-3 border-b border-white/10">
           <div class="pr-4">
             <div class="flex items-center gap-2 mb-1.5 flex-wrap">
-              <span class="text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/40 uppercase tracking-wider">
+              <span class="text-[10px] sm:text-xs font-bold px-2.5 py-0.5 rounded-full bg-[#70a943]/25 text-[#a8f579] border border-[#70a943]/50 uppercase tracking-wider">
                 ${prog.level}
               </span>
-              <span class="text-[11px] sm:text-xs font-medium text-slate-300 truncate">
+              <span class="text-[11px] sm:text-xs font-medium text-slate-200 truncate">
                 ${prog.facultyName}
               </span>
             </div>
@@ -242,18 +244,18 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div>
               <div class="text-[10px] text-slate-500 uppercase font-semibold">Intakes</div>
-              <div class="text-xs sm:text-sm font-bold text-amber-700 mt-0.5">${prog.intakes}</div>
+              <div class="text-xs sm:text-sm font-bold text-[#4b7a27] mt-0.5">${prog.intakes}</div>
             </div>
             <div>
               <div class="text-[10px] text-slate-500 uppercase font-semibold">Awarding Body</div>
-              <div class="text-xs sm:text-sm font-bold text-blue-900 mt-0.5 truncate">${prog.awardingBody}</div>
+              <div class="text-xs sm:text-sm font-bold text-[#0072bb] mt-0.5 truncate">${prog.awardingBody}</div>
             </div>
           </div>
 
           <!-- Modules List -->
           <div>
             <h3 class="text-sm sm:text-base font-bold text-slate-900 mb-2.5 flex items-center gap-2">
-              <span class="w-5 h-5 rounded-md bg-amber-100 text-amber-800 text-xs flex items-center justify-center font-bold">📚</span>
+              <span class="w-5 h-5 rounded-md bg-[#70a943]/15 text-[#4b7a27] text-xs flex items-center justify-center font-bold">📚</span>
               Core Modules & Curriculum Structure
             </h3>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -268,17 +270,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
           <!-- Entry Requirements & Outcomes -->
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4">
-            <div class="bg-blue-50/60 p-3.5 sm:p-4 rounded-xl border border-blue-100">
+            <div class="bg-blue-50/70 p-3.5 sm:p-4 rounded-xl border border-blue-200">
               <h4 class="text-xs font-bold text-blue-950 mb-1 flex items-center gap-1.5">
-                <svg class="w-3.5 h-3.5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <svg class="w-3.5 h-3.5 text-[#0072bb]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                 Entry Criteria
               </h4>
               <p class="text-[11px] text-slate-700 leading-relaxed">${prog.eligibility}</p>
             </div>
 
-            <div class="bg-emerald-50/60 p-3.5 sm:p-4 rounded-xl border border-emerald-100">
+            <div class="bg-emerald-50/70 p-3.5 sm:p-4 rounded-xl border border-emerald-200">
               <h4 class="text-xs font-bold text-emerald-950 mb-1 flex items-center gap-1.5">
-                <svg class="w-3.5 h-3.5 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
+                <svg class="w-3.5 h-3.5 text-[#70a943]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path></svg>
                 Career & Industry Outcomes
               </h4>
               <div class="flex flex-wrap gap-1">
@@ -294,13 +296,13 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="shrink-0 bg-white border-t border-slate-200 p-3 sm:p-4 shadow-lg flex items-center justify-between gap-3">
           <div class="leading-tight">
             <div class="text-[10px] text-slate-500 uppercase font-semibold">Total Investment</div>
-            <div class="text-sm sm:text-base font-extrabold text-amber-600">${prog.tuitionEstimate}</div>
+            <div class="text-sm sm:text-base font-extrabold text-[#4b7a27]">${prog.tuitionEstimate}</div>
           </div>
           <div class="flex items-center gap-2">
             <button onclick="downloadSyllabus('${prog.title}')" class="hidden sm:inline-block px-3.5 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-50 text-xs font-semibold text-slate-700 transition-colors">
               Brochure
             </button>
-            <button onclick="quickApply('${prog.title}')" class="btn-gold px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-md flex items-center gap-1.5">
+            <button onclick="quickApply('${prog.title}')" class="btn-ccas-green px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold shadow-md flex items-center gap-1.5">
               <span>Apply for Next Intake</span>
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
             </button>
@@ -439,7 +441,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!pathwayTabsContainer || !pathwayDetailsContainer || typeof CCAS_PATHWAYS === 'undefined') return;
 
     pathwayTabsContainer.innerHTML = CCAS_PATHWAYS.map((p, idx) => `
-      <button class="pathway-btn px-5 py-3 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all ${idx === activePathwayIndex ? 'bg-[#07162c] text-white shadow-md' : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'}" data-index="${idx}">
+      <button class="pathway-btn px-5 py-3 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 transition-all ${idx === activePathwayIndex ? 'bg-[#0072bb] text-white shadow-md' : 'bg-white text-slate-700 hover:bg-slate-100 border border-slate-200'}" data-index="${idx}">
         <span class="text-base">${p.flag}</span>
         <span>${p.country}</span>
       </button>
@@ -452,7 +454,7 @@ document.addEventListener('DOMContentLoaded', () => {
           <span class="text-3xl">${selected.flag}</span>
           <div>
             <h4 class="text-xl font-bold text-slate-900">${selected.country} Progression Pathway</h4>
-            <span class="text-xs text-amber-700 font-semibold">Ofqual Level 4 & 5 UK Credit Transfer</span>
+            <span class="text-xs text-[#4b7a27] font-semibold">Ofqual Level 4 & 5 UK Credit Transfer</span>
           </div>
         </div>
         <p class="text-slate-600 text-sm leading-relaxed mb-6">${selected.description}</p>
@@ -463,7 +465,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="space-y-2">
               ${selected.partners.map(u => `
                 <div class="flex items-center gap-2 text-xs font-semibold text-slate-800 bg-slate-50 p-2.5 rounded-lg border border-slate-100">
-                  <span class="text-blue-600">🏛️</span>
+                  <span class="text-[#0072bb]">🏛️</span>
                   <span>${u}</span>
                 </div>
               `).join('')}
@@ -474,8 +476,8 @@ document.addEventListener('DOMContentLoaded', () => {
             <h5 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Pathway Advantages</h5>
             <div class="space-y-2">
               ${selected.benefits.map(b => `
-                <div class="flex items-center gap-2 text-xs font-semibold text-emerald-800 bg-emerald-50/60 p-2.5 rounded-lg border border-emerald-100">
-                  <span class="text-emerald-600 font-bold">✓</span>
+                <div class="flex items-center gap-2 text-xs font-semibold text-emerald-800 bg-emerald-50/70 p-2.5 rounded-lg border border-emerald-200">
+                  <span class="text-[#70a943] font-bold">✓</span>
                   <span>${b}</span>
                 </div>
               `).join('')}
@@ -501,10 +503,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     campusTabs.forEach(btn => {
       if (btn.dataset.campus === activeCampusId) {
-        btn.classList.add('bg-[#07162c]', 'text-white', 'shadow-md');
+        btn.classList.add('bg-[#0072bb]', 'text-white', 'shadow-md');
         btn.classList.remove('bg-white', 'text-slate-700');
       } else {
-        btn.classList.remove('bg-[#07162c]', 'text-white', 'shadow-md');
+        btn.classList.remove('bg-[#0072bb]', 'text-white', 'shadow-md');
         btn.classList.add('bg-white', 'text-slate-700');
       }
     });
@@ -512,26 +514,26 @@ document.addEventListener('DOMContentLoaded', () => {
     campusDisplay.innerHTML = `
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 items-center bg-white rounded-2xl sm:rounded-3xl p-5 sm:p-10 border border-slate-200 shadow-sm">
         <div>
-          <div class="inline-block px-3 py-1 bg-amber-100 text-amber-900 rounded-full text-xs font-bold mb-3">
+          <div class="inline-block px-3 py-1 bg-[#70a943]/15 text-[#4b7a27] rounded-full text-xs font-bold mb-3 border border-[#70a943]/30">
             ${campus.city}
           </div>
           <h3 class="text-xl sm:text-3xl font-extrabold text-slate-900 mb-3 sm:mb-4">${campus.name}</h3>
           
           <div class="space-y-2.5 sm:space-y-3 text-xs sm:text-sm text-slate-600 mb-6">
             <div class="flex items-start gap-2.5 sm:gap-3">
-              <span class="text-blue-600 font-bold shrink-0 mt-0.5">📍</span>
+              <span class="text-[#0072bb] font-bold shrink-0 mt-0.5">📍</span>
               <span><strong>Address:</strong> ${campus.address}</span>
             </div>
             <div class="flex items-center gap-2.5 sm:gap-3">
-              <span class="text-emerald-600 font-bold shrink-0">📞</span>
-              <span><strong>Direct Hotlines:</strong> <a href="tel:${campus.phone.split('/')[0].trim()}" class="text-blue-700 hover:underline font-semibold">${campus.phone}</a></span>
+              <span class="text-[#70a943] font-bold shrink-0">📞</span>
+              <span><strong>Direct Hotlines:</strong> <a href="tel:${campus.phone.split('/')[0].trim()}" class="text-[#0072bb] hover:underline font-semibold">${campus.phone}</a></span>
             </div>
             <div class="flex items-center gap-2.5 sm:gap-3">
-              <span class="text-amber-600 font-bold shrink-0">✉️</span>
-              <span><strong>Email:</strong> <a href="mailto:${campus.email}" class="text-blue-700 hover:underline font-semibold">${campus.email}</a></span>
+              <span class="text-[#0072bb] font-bold shrink-0">✉️</span>
+              <span><strong>Email:</strong> <a href="mailto:${campus.email}" class="text-[#0072bb] hover:underline font-semibold">${campus.email}</a></span>
             </div>
             <div class="flex items-center gap-2.5 sm:gap-3">
-              <span class="text-purple-600 font-bold shrink-0">⏰</span>
+              <span class="text-slate-500 font-bold shrink-0">⏰</span>
               <span><strong>Campus Hours:</strong> ${campus.hours}</span>
             </div>
           </div>
@@ -546,11 +548,11 @@ document.addEventListener('DOMContentLoaded', () => {
           </div>
 
           <div class="flex flex-col sm:flex-row gap-2.5 sm:gap-3">
-            <a href="https://maps.google.com/?q=${encodeURIComponent(campus.address)}" target="_blank" class="w-full sm:w-auto px-5 py-3 bg-[#07162c] text-white rounded-xl text-xs font-bold hover:bg-[#122a4e] transition-colors flex items-center justify-center gap-2">
+            <a href="https://maps.google.com/?q=${encodeURIComponent(campus.address)}" target="_blank" class="w-full sm:w-auto px-5 py-3 bg-[#05182c] text-white rounded-xl text-xs font-bold hover:bg-[#0072bb] transition-colors flex items-center justify-center gap-2 shadow-sm">
               <span>Open in Google Maps</span>
               <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
             </a>
-            <button onclick="quickApply('Campus Visit Inquiry - ${campus.name}')" class="w-full sm:w-auto px-5 py-3 bg-amber-500 hover:bg-amber-600 text-slate-950 rounded-xl text-xs font-bold transition-colors text-center">
+            <button onclick="quickApply('Campus Visit Inquiry - ${campus.name}')" class="btn-ccas-green w-full sm:w-auto px-5 py-3 rounded-xl text-xs font-bold transition-all text-center shadow-md">
               Schedule Campus Tour
             </button>
           </div>
@@ -590,7 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!toast) {
       toast = document.createElement('div');
       toast.id = 'toast-notification';
-      toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#07162c] text-white px-6 py-3.5 rounded-2xl shadow-2xl border border-amber-400/40 text-sm font-semibold flex items-center gap-3 transition-all duration-300 pointer-events-none opacity-0 translate-y-4';
+      toast.className = 'fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#05182c] text-white px-6 py-3.5 rounded-2xl shadow-2xl border border-[#70a943]/50 text-sm font-semibold flex items-center gap-3 transition-all duration-300 pointer-events-none opacity-0 translate-y-4';
       document.body.appendChild(toast);
     }
     toast.innerHTML = `<span>🎓</span><span>${msg}</span>`;

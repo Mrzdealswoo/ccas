@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
+  <defs>
+    <!-- Gold gradient -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDF0A6" />
+      <stop offset="45%" stop-color="#D4AF37" />
+      <stop offset="100%" stop-color="#9A7B1C" />
+    </linearGradient>
+    
+    <!-- Royal Navy gradient -->
+    <linearGradient id="navyGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0E2344" />
+      <stop offset="100%" stop-color="#040D1A" />
+    </linearGradient>
+
+    <!-- Subtle inner shadow/glow -->
+    <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#07162C" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Outer Shield Shadow -->
+  <g filter="url(#softGlow)">
+    <!-- Base Shield -->
+    <path d="M60,6 C90,6 106,12 106,36 C106,74 76,104 60,114 C44,104 14,74 14,36 C14,12 30,6 60,6 Z" fill="url(#navyGrad)" stroke="url(#goldGrad)" stroke-width="3" stroke-linejoin="round" />
+    
+    <!-- Inner Shield Rim -->
+    <path d="M60,12 C84,12 98,17 98,37 C98,68 73,95 60,104 C47,95 22,68 22,37 C22,17 36,12 60,12 Z" fill="none" stroke="url(#goldGrad)" stroke-width="1" stroke-opacity="0.6" stroke-dasharray="2 1" />
+  </g>
+
+  <!-- Laurel Wreath Leaves (Left) -->
+  <g fill="url(#goldGrad)" opacity="0.9">
+    <path d="M30,48 C27,44 26,38 31,36 C33,40 33,46 30,48 Z" />
+    <path d="M27,60 C24,56 24,50 29,48 C31,52 30,58 27,60 Z" />
+    <path d="M28,72 C26,68 27,62 32,61 C33,65 31,71 28,72 Z" />
+    <path d="M34,84 C32,80 34,74 39,74 C39,78 37,83 34,84 Z" />
+  </g>
+
+  <!-- Laurel Wreath Leaves (Right) -->
+  <g fill="url(#goldGrad)" opacity="0.9">
+    <path d="M90,48 C93,44 94,38 89,36 C87,40 87,46 90,48 Z" />
+    <path d="M93,60 C96,56 96,50 91,48 C89,52 90,58 93,60 Z" />
+    <path d="M92,72 C94,68 93,62 88,61 C87,65 89,71 92,72 Z" />
+    <path d="M86,84 C88,80 86,74 81,74 C81,78 83,83 86,84 Z" />
+  </g>
+
+  <!-- Open Academic Book of Knowledge -->
+  <g transform="translate(0, -2)">
+    <!-- Book Left Page -->
+    <path d="M60,42 C51,39 42,40 37,42 C36,49 36,60 37,63 C42,61 51,60 60,63 Z" fill="#FFFFFF" opacity="0.95" />
+    <!-- Book Right Page -->
+    <path d="M60,42 C69,39 78,40 83,42 C84,49 84,60 83,63 C78,61 69,60 60,63 Z" fill="#F8FAFC" opacity="0.95" />
+    <!-- Book Center Spine & Outline -->
+    <path d="M60,42 L60,63" stroke="#D4AF37" stroke-width="1.8" stroke-linecap="round" />
+    <path d="M37,42 C42,40 51,39 60,42 C69,39 78,40 83,42" fill="none" stroke="#D4AF37" stroke-width="1.4" />
+    <path d="M37,63 C42,61 51,60 60,63 C69,60 78,61 83,63" fill="none" stroke="#D4AF37" stroke-width="1.4" />
+    
+    <!-- Book Text Lines (Micro) -->
+    <line x1="42" y1="47" x2="55" y2="46" stroke="#0E2344" stroke-width="1" stroke-linecap="round" opacity="0.5" />
+    <line x1="42" y1="51" x2="54" y2="50" stroke="#0E2344" stroke-width="1" stroke-linecap="round" opacity="0.5" />
+    <line x1="42" y1="55" x2="52" y2="54" stroke="#0E2344" stroke-width="1" stroke-linecap="round" opacity="0.5" />
+
+    <line x1="65" y1="46" x2="78" y2="47" stroke="#0E2344" stroke-width="1" stroke-linecap="round" opacity="0.5" />
+    <line x1="66" y1="50" x2="78" y2="51" stroke="#0E2344" stroke-width="1" stroke-linecap="round" opacity="0.5" />
+    <line x1="68" y1="54" x2="78" y2="55" stroke="#0E2344" stroke-width="1" stroke-linecap="round" opacity="0.5" />
+  </g>
+
+  <!-- Torch of Wisdom / Star of Excellence at Top -->
+  <path d="M60,20 L62,25 L67,26 L63,29 L64,34 L60,31 L56,34 L57,29 L53,26 L58,25 Z" fill="url(#goldGrad)" />
+  <circle cx="46" cy="24" r="1.5" fill="url(#goldGrad)" />
+  <circle cx="74" cy="24" r="1.5" fill="url(#goldGrad)" />
+
+  <!-- Monogram Banner & CCAS Acronym -->
+  <path d="M35,76 L85,76 L81,87 L60,89 L39,87 Z" fill="url(#goldGrad)" />
+  <text x="60" y="85" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="900" font-size="9" fill="#040D1A" text-anchor="middle" letter-spacing="1.5">CCAS</text>
+
+  <!-- Est Ribbon Micro Text -->
+  <text x="60" y="100" font-family="'Plus Jakarta Sans', system-ui, sans-serif" font-weight="700" font-size="5.5" fill="url(#goldGrad)" text-anchor="middle" letter-spacing="1.2">SRI LANKA</text>
+</svg>
